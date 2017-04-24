@@ -12,13 +12,12 @@ fluidPage(
             selectInput("group", "Group:", 
                         choices = c( "groupA", "groupB")) ,
             actionButton("update", "Select group"),
-           
             hr(),
-            actionButton("plot", "select kind"),
          #  helpText("(gender, ethinicity, ...)")
         #    submitButton("Update View")
             selectInput("kind", "Kind:", 
                     choices = "na"),
+            actionButton("plot", "select kind"),
             hr()
         
         ),

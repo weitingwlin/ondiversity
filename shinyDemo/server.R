@@ -46,7 +46,7 @@ shinyServer(
       divtable <- reactive({
         data <- datasetInput()
         A <- data[, input$kind]
-        data.frame(richness = richness(A))
+        data.frame(richness = richness(A), IER = simpsonIER(A))
       })
       
      
