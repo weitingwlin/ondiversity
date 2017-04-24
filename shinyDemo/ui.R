@@ -10,13 +10,17 @@ fluidPage(
         # Define the sidebar with one input
         sidebarPanel(
             selectInput("group", "Group:", 
-                        choices = c( "groupA")) ,
-            actionButton("update", "Select group")
-           # actionButton("clear", "Clear"),
+                        choices = c( "groupA", "groupB")) ,
+            actionButton("update", "Select group"),
            
-           # hr(),
+            hr(),
+            actionButton("plot", "select kind"),
          #  helpText("(gender, ethinicity, ...)")
         #    submitButton("Update View")
+            selectInput("kind", "Kind:", 
+                    choices = "na"),
+            hr()
+        
         ),
         
         # Create a spot for the barplot

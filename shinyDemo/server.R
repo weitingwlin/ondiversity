@@ -3,7 +3,7 @@ shinyServer(
   function(input, output, session) {
   
 
-    url <- 'C:/Users/Wei-Ting/Dropbox/DataCoding/onDiversity/Data/'
+    url <- 'https://raw.githubusercontent.com/weitingwlin/ondiversity/master/Data/'
     # 
     # data <-  read.csv(paste(url, "groupA.csv", sep = ""), header  = TRUE) 
     # A <- data[,"ethnicity"]
@@ -25,22 +25,18 @@ shinyServer(
     })
 
     observeEvent(input$update, {
-      insertUI(
-        selector = "#update",
-        where = "afterEnd",
-        ui = selectInput("kind", "Kind:", 
-                         choices = names( datasetInput()))
-      )
-      insertUI(
-        selector = "#update",
-        where = "afterEnd",
-        ui = hr()
-      )
-      insertUI(
-        selector = "#update",
-        where = "afterEnd",
-        ui = helpText("(gender, ethinicity, ...)")
-      )
+     
+     # insertUI(
+     #   selector = "#update",
+     #   where = "afterEnd",
+     #   ui = actionButton("clear", "Clear")
+     # )
+       data <- datasetInput()
+       updateSelectInput(session, "kind", label = NULL, choices = names(data),
+                        selected = NULL)
+    })
+    
+    observeEvent(input$plot, {
       
       mytable <- reactive({
         data <- datasetInput()
@@ -53,6 +49,7 @@ shinyServer(
         data.frame(richness = richness(A))
       })
       
+     
 
     # Fill in the spot we created for a plot
         output$phonePlot <- renderPlot({
@@ -67,6 +64,7 @@ shinyServer(
         })
       
     })
+    
 
 }
 )
