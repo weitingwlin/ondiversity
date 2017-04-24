@@ -11,3 +11,7 @@
 ### Probability of Interspecific Encounter (Simpson’s Evenness)
 
 ### Entropy (Shannon diversity index)
+
+## "Shiny" app
+[A demo web app](https://weitingwlin.shinyapps.io/shinydemo/)
+
