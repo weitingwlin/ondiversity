@@ -25,8 +25,12 @@ fluidPage(
         # Create a spot for the barplot
 
         mainPanel(
-          plotOutput("phonePlot"),  
-          tableOutput("values")
+          h2("Diversity in this group"),
+          tableOutput("values"),
+          p("Richness: the number of kinds"),
+          p("IER: the probability that one encounter a member of a different kind"),
+          hr(),
+          plotOutput("phonePlot")
         )
     ) # sidebarLayout
     
