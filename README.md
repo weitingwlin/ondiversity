@@ -1,4 +1,5 @@
 # On diversity
+<<<<<<< HEAD
 This application will analyze the diversity of a group based on the data provided.
 After analyzing, the application will output a score and several graphs to indicate the diversity of the group. The result will help users to understand how the group is diverse and how to increase or decrease the diversity of the selected group.
 
@@ -9,6 +10,12 @@ Recently, such concept has also been adapted by business world as a measure to p
 See more on **why diversity**:                                               
 **INSEAD Knowledge -** [Why diversity matters: the lessons from the setting of the rising sun](http://knowledge.insead.edu/leadership-organisations/why-diversity-matters-773)                                   
 **McKinsey Insight -** [Why diversity matters](http://www.mckinsey.com/business-functions/organization/our-insights/why-diversity-matters)
+=======
+[some introduction]
+
+## Why diversity?
+[something, who/why should care?]
+>>>>>>> parent of 7b138b1... Added text
 
 ## How to calculate diversity?
 
