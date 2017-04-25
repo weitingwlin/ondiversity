@@ -13,5 +13,5 @@
 ### Entropy (Shannon diversity index)
 
 ## "Shiny" app
-[A demo web app](https://weitingwlin.shinyapps.io/shinydemo/)
+[A demo web app](https://weitingwlin.shinyapps.io/shinydemo/){:target="_blank"} 
 
