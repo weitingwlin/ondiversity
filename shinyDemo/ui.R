@@ -9,8 +9,21 @@ fluidPage(
         
         # Define the sidebar with one input
         sidebarPanel(
+            fileInput('file1', 'Upload CSV File',
+                      accept=c('text/csv', 
+                             'text/comma-separated-values,text/plain', 
+                             '.csv')),
+            checkboxInput('header', 'Header', TRUE),
+            radioButtons('sep', 'Separator',
+                         c(Comma=',', Tab='\t'), ','),
+          #  radioButtons('quote', 'Quote',
+           #              c(None='',
+            #               'Double Quote'='"',
+            #               'Single Quote'="'"),
+            #             '"')
             selectInput("group", "Group:", 
-                        choices = c( "groupA", "groupB")) ,
+                        choices = c( "groupA", "groupB", "User-Upload"),
+                        selected = "User-Upload") ,
             actionButton("update", "Select group"),
             hr(),
          #  helpText("(gender, ethinicity, ...)")
@@ -26,7 +39,8 @@ fluidPage(
 
         mainPanel(
           h2("Diversity in this group"),
-          tableOutput("values"),
+          div(tableOutput("values"), style = "font-size:150%"),
+         # tableOutput("values"),
           p("Richness: the number of kinds"),
           p("IER: the probability that one encounter a member of a different kind"),
           hr(),

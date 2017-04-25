@@ -9,21 +9,25 @@ shinyServer(
     # 
     # data <-  read.csv(paste(url, "groupA.csv", sep = ""), header  = TRUE) 
     # A <- data[,"ethnicity"]
-   
+   #
     
-    terms <- reactive({
+  #  terms <- reactive({
         # Change when the "update" button is pressed...
-        input$update
+   #     input$update
         # ...but not for anything else
-        isolate({
-          data <- read.csv(paste(url, input$group,".csv", sep = ""), header  = TRUE)
-          mytable <-table(data[,input$kind])
-            # names(data) <- c("gender", "age", "amount")
-            })
-    })
+     #   isolate({
+         
+     #       })
+   # })
     
     datasetInput <- reactive({
-      read.csv(paste(url, input$group,".csv", sep = ""), header  = TRUE)
+      if (input$group == "User-Upload"){
+        inFile <- input$file1
+        read.csv(inFile$datapath, header=input$header, sep=input$sep)
+      } else {
+        read.csv(paste(url, input$group,".csv", sep = ""), header  = TRUE)
+      }
+      
     })
 
     observeEvent(input$update, {
