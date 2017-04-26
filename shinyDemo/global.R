@@ -1,4 +1,5 @@
 
+url <- 'https://raw.githubusercontent.com/weitingwlin/ondiversity/master/Data/'
 
 richness <- function(A){
   return(length(unique(A[!is.na(A)])))

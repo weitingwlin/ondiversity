@@ -16,15 +16,10 @@ fluidPage(
             checkboxInput('header', 'Header', TRUE),
             radioButtons('sep', 'Separator',
                          c(Comma=',', Tab='\t'), ','),
-          #  radioButtons('quote', 'Quote',
-           #              c(None='',
-            #               'Double Quote'='"',
-            #               'Single Quote'="'"),
-            #             '"')
-            selectInput("group", "Group:", 
+            selectInput("group", "Or, select a demo group:", 
                         choices = c( "groupA", "groupB", "User-Upload"),
                         selected = "User-Upload") ,
-            actionButton("update", "Select group"),
+            actionButton("update", "Load selected/uploaded file"),
             hr(),
          #  helpText("(gender, ethinicity, ...)")
         #    submitButton("Update View")
@@ -32,7 +27,6 @@ fluidPage(
                     choices = "na"),
             actionButton("plot", "select kind"),
             hr()
-        
         ),
         
         # Create a spot for the barplot
@@ -44,7 +38,7 @@ fluidPage(
           p("Richness: the number of kinds"),
           p("IER: the probability that one encounter a member of a different kind"),
           hr(),
-          plotOutput("phonePlot")
+          plotOutput("barPlot")
         )
     ) # sidebarLayout
     
