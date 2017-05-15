@@ -1,0 +1,58 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+(run `Categorixation2.Rmd` to get sorted_data)
+
+```{r}
+names(sorted_data)
+```
+```{r}
+summary(sorted_data)
+```
+
+
+```{r}
+library(ggplot2)
+library(gridExtra)
+source("functions.R")
+```
+
+```{r}
+p <-ggplot(sorted_data, aes(Primary.Nat,fill = Gender))
+p <- p +geom_bar(stat = "count") 
+p <- p + facet_grid(section ~ .)
+p <- p + scale_fill_brewer(palette="Set1")
+p <- p + theme(axis.text.x = element_text(angle = 60, hjust = 1))
+p
+```
+
+```{r}
+df <- data.frame(section = rep(NA, 3), IER_Nat = rep(NA, 3), IER_Gender = rep(NA, 3))
+#g <- 1
+for (g in 1:3){
+    df$section[g] <- g
+    # Primary Nationality in this group
+    subdata <- sorted_data$Primary.Nat[sorted_data$section == g]
+    # mean encounter rate
+    df$IER_Nat[g] <- simpsonIER(subdata)
+    # Gender in this group
+    subdata <- sorted_data$Gender[sorted_data$section == g]
+    # mean encounter rate
+    df$IER_Gender[g] <- simpsonIER(subdata)
+}
+df$section <- as.factor(df$section)
+df
+```
+
+```{r}
+p1 <- ggplot(df, aes(x = section, y = IER_Nat, fill = section))
+p1 <- p1 + geom_bar(stat = "identity")
+#p1 <- p1 + scale_fill_brewer(palette="Set1")
+
+p2 <- ggplot(df, aes(x = section, y = IER_Gender, fill = section))
+p2 <- p2 + geom_bar(stat = "identity")
+
+grid.arrange(p1, p2, ncol=1)
+```
+
