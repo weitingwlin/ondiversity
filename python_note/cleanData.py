@@ -2,7 +2,6 @@
  This file will import and clenup the data
 '''
 
-import numpy as np
 import pandas as pd
 
 def dataCleanUp(df = None):
